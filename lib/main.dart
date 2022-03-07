@@ -17,47 +17,42 @@ class MyWonderfulLifeApp extends StatelessWidget {
   }
 }
 
-class TodoListPage extends StatelessWidget {
+class TodoListPage extends StatefulWidget {
+  @override
+  _TodoListPageState createState() => _TodoListPageState();
+}
+
+class _TodoListPageState extends State<TodoListPage> {
+  List<String> todoList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('リスト一覧'),
       ),
-      body: ListView(
-        children: const <Widget>[
-          Card(
+      body: ListView.builder(
+        itemCount: todoList.length,
+        itemBuilder: (context, index) {
+          return Card(
             child: ListTile(
-              title: Text('buy carrot'),
+              title: Text(todoList[index]),
             ),
-          ),
-          Card(
-            child: ListTile(
-              leading: Icon(Icons.hub),
-              subtitle: Text('にんじんだよ'),
-              title: Text('buy carrot'),
-              trailing: Icon(Icons.add),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: Text('buy carrot'),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: Text('buy carrot'),
-            ),
-          ),
-        ],
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(
+        onPressed: () async {
+          final newListText = await Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
               return TodoAddPage();
             }),
           );
+          if (newListText != null) {
+            setState(() {
+              todoList.add(newListText);
+            });
+          }
         },
         child: Icon(Icons.add),
       ),
@@ -65,42 +60,51 @@ class TodoListPage extends StatelessWidget {
   }
 }
 
-class TodoAddPage extends StatelessWidget {
+class TodoAddPage extends StatefulWidget {
+  @override
+  _TodoAddPageState createState() => _TodoAddPageState();
+}
+
+class _TodoAddPageState extends State<TodoAddPage> {
+  String _text = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // *** 追加する部分 ***
       appBar: AppBar(
         title: Text('リスト追加'),
       ),
-      // *** 追加する部分 ***
       body: Container(
-        // 余白を付ける
         padding: EdgeInsets.all(64),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // テキスト入力
-            TextField(),
+            Text(
+              _text,
+              style: TextStyle(color: Colors.blue),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              onChanged: (String value) {
+                setState(() {
+                  _text = value;
+                });
+              },
+            ),
             const SizedBox(height: 8),
             Container(
-              // 横幅いっぱいに広げる
               width: double.infinity,
-              // リスト追加ボタン
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop(_text);
+                },
                 child: Text('リスト追加', style: TextStyle(color: Colors.white)),
               ),
             ),
             const SizedBox(height: 8),
             Container(
-              // 横幅いっぱいに広げる
               width: double.infinity,
-              // キャンセルボタン
               child: TextButton(
-                // ボタンをクリックした時の処理
                 onPressed: () {
-                  // "pop"で前の画面に戻る
                   Navigator.of(context).pop();
                 },
                 child: Text('キャンセル'),
