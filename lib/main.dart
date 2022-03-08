@@ -36,6 +36,18 @@ class _TodoListPageState extends State<TodoListPage> {
           itemBuilder: (context, index) {
             return Dismissible(
                 key: UniqueKey(),
+                direction: DismissDirection.endToStart,
+                background: Container(
+                  alignment: AlignmentDirectional.centerEnd,
+                  color: Colors.red,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                    child: Icon(
+                      Icons.delete,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
                 child: Card(
                   child: ListTile(
                     title: Text(todoList[index]),
