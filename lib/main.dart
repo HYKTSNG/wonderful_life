@@ -55,7 +55,7 @@ class _TodoListPageState extends State<TodoListPage> {
                 ),
                 child: Card(
                   child: ListTile(
-                    title: Text("$todoList[index]"),
+                    title: Text(todoList[index]),
                   ),
                 ));
           }),
