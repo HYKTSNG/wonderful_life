@@ -43,7 +43,7 @@ class _TodoListPageState extends State<TodoListPage> {
                 background: Container(
                   alignment: AlignmentDirectional.centerEnd,
                   color: Colors.red,
-                  child: Padding(
+                  child: const Padding(
                     padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                     child: Icon(
                       Icons.delete,
