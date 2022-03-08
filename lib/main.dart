@@ -37,6 +37,9 @@ class _TodoListPageState extends State<TodoListPage> {
             return Dismissible(
                 key: UniqueKey(),
                 direction: DismissDirection.endToStart,
+                onDismissed: (direction) {
+                  todoList.remove(todoList[index]);
+                },
                 background: Container(
                   alignment: AlignmentDirectional.centerEnd,
                   color: Colors.red,
