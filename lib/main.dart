@@ -38,7 +38,9 @@ class _TodoListPageState extends State<TodoListPage> {
                 key: UniqueKey(),
                 direction: DismissDirection.endToStart,
                 onDismissed: (direction) {
-                  todoList.remove(todoList[index]);
+                  setState(() {
+                    todoList.remove(todoList[index]);
+                  });
                 },
                 background: Container(
                   alignment: AlignmentDirectional.centerEnd,
@@ -53,7 +55,7 @@ class _TodoListPageState extends State<TodoListPage> {
                 ),
                 child: Card(
                   child: ListTile(
-                    title: Text(todoList[index]),
+                    title: Text("$todoList[index]"),
                   ),
                 ));
           }),
