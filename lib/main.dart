@@ -34,7 +34,7 @@ class _TodoListPageState extends State<TodoListPage> {
           children: const [
             DrawerHeader(
               child: Text(
-                "カテゴリー1覧",
+                "カテゴリー覧",
                 style: TextStyle(fontSize: 16),
                 textAlign: TextAlign.center,
               ),
@@ -63,19 +63,36 @@ class _TodoListPageState extends State<TodoListPage> {
           itemBuilder: (context, index) {
             return Dismissible(
                 key: UniqueKey(),
-                direction: DismissDirection.endToStart,
                 onDismissed: (direction) {
                   setState(() {
                     todoList.remove(todoList[index]);
                   });
+                  if (direction == DismissDirection.endToStart) {
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(content: Text("delete")));
+                  } else {
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(content: Text("good job")));
+                  }
                 },
-                background: Container(
+                secondaryBackground: Container(
                   alignment: AlignmentDirectional.centerEnd,
                   color: Colors.red,
                   child: const Padding(
                     padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                     child: Icon(
                       Icons.delete,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                background: Container(
+                  alignment: AlignmentDirectional.centerEnd,
+                  color: Colors.green,
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                    child: Icon(
+                      Icons.star,
                       color: Colors.white,
                     ),
                   ),
