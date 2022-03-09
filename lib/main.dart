@@ -42,7 +42,7 @@ class _TodoListPageState extends State<TodoListPage> {
             ),
             ListTile(
               title: Text("Done"),
-              trailing: Icon(Icons.star, color: Colors.red),
+              trailing: Icon(Icons.star, color: Colors.green),
             ),
             ListTile(
               title: Text("Garbage box"),
