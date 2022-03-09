@@ -28,27 +28,33 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-          child: ListView(
-        children: const [
-          DrawerHeader(
-            child: Text("ヘッダー"),
-            decoration: BoxDecoration(color: Colors.blue),
-          ),
-          ListTile(
-            title: Text("Done"),
-            trailing: Icon(Icons.star, color: Colors.red),
-          ),
-          ListTile(
-            title: Text("Garbage box"),
-            trailing: Icon(
-              Icons.delete,
-              color: Colors.red,
+      drawer: SizedBox(
+        child: Drawer(
+            child: ListView(
+          children: const [
+            DrawerHeader(
+              child: Text(
+                "カテゴリー1覧",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              decoration: BoxDecoration(color: Colors.blue),
             ),
-          ),
-          ListTile(),
-        ],
-      )),
+            ListTile(
+              title: Text("Done"),
+              trailing: Icon(Icons.star, color: Colors.red),
+            ),
+            ListTile(
+              title: Text("Garbage box"),
+              trailing: Icon(
+                Icons.delete,
+                color: Colors.red,
+              ),
+            ),
+            ListTile(),
+          ],
+        )),
+      ),
       appBar: AppBar(
         title: const Text('Wonderful Life'),
       ),
