@@ -101,7 +101,6 @@ class _TodoListPageState extends State<TodoListPage> {
                   ),
                 ),
                 child: Card(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                   child: ListTile(
                     title: Text(
                       todoList[index],
