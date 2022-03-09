@@ -23,7 +23,7 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
-  List<String> todoList = ["sample1", "sample2", "sample3"];
+  List<String> todoList = ["誰かに挨拶しよう!", "ゴミ拾いしよう!", "誰かに感謝を伝えよう!"];
 
   @override
   Widget build(BuildContext context) {
