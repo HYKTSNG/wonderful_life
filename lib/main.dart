@@ -129,11 +129,14 @@ class _TodoAddPageState extends State<TodoAddPage> {
             ),
             const SizedBox(height: 8),
             TextField(
+              maxLength: 15,
               onChanged: (String value) {
                 setState(() {
                   _text = value;
                 });
               },
+              decoration: const InputDecoration(
+                  hintText: "例: 誰かに挨拶", labelText: "やりたい良いことを入力してね。"),
             ),
             const SizedBox(height: 8),
             Container(
