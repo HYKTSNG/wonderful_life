@@ -23,7 +23,7 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
-  List<String> todoList = [];
+  List<String> todoList = ["sample1", "sample2", "sample3"];
 
   @override
   Widget build(BuildContext context) {
@@ -68,11 +68,14 @@ class _TodoListPageState extends State<TodoListPage> {
                     todoList.remove(todoList[index]);
                   });
                   if (direction == DismissDirection.endToStart) {
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text("delete")));
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("delete"),
+                      duration: Duration(seconds: 1),
+                    ));
                   } else {
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text("good job")));
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("good job"),
+                        duration: Duration(seconds: 1)));
                   }
                 },
                 secondaryBackground: Container(
