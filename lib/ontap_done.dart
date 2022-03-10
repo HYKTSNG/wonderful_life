@@ -11,7 +11,7 @@ class _onTapPageState extends State<onTapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('できたこと！'),
+          title: Text('done list'),
         ),
         body: Center(
           child: Text("coming soon"),
