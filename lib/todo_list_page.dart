@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ontap_garbage_box.dart';
 import 'todo_add_page.dart';
 import 'ontap_done.dart';
 
@@ -42,6 +43,14 @@ class _TodoListPageState extends State<TodoListPage> {
                 Icons.delete,
                 color: Colors.red,
               ),
+              onTap: () async {
+                final onTapGarbageBoxListPage =
+                    await Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return onTapGarbageBoxPage();
+                  }),
+                );
+              },
             ),
             ListTile(),
           ],
