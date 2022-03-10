@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'todo_add_page.dart';
+import 'ontap_done.dart';
 
 class TodoListPage extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _TodoListPageState extends State<TodoListPage> {
       drawer: SizedBox(
         child: Drawer(
             child: ListView(
-          children: const [
+          children: [
             DrawerHeader(
               child: Text(
                 "カテゴリー覧",
@@ -27,6 +28,13 @@ class _TodoListPageState extends State<TodoListPage> {
             ListTile(
               title: Text("Done"),
               trailing: Icon(Icons.star, color: Colors.green),
+              onTap: () async {
+                final onTapDoneListPage = await Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return onTapPage();
+                  }),
+                );
+              },
             ),
             ListTile(
               title: Text("Garbage box"),
