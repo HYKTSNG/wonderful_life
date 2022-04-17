@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'ontap_garbage_box.dart';
 import 'todo_add_page.dart';
 import 'ontap_done.dart';
+import 'onPressedLoginView.dart';
 
 class TodoListPage extends StatefulWidget {
   @override
@@ -52,12 +53,21 @@ class _TodoListPageState extends State<TodoListPage> {
                 );
               },
             ),
-            ListTile(),
           ],
         )),
       ),
       appBar: AppBar(
         title: const Text('Wonderful Life'),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                final onPressedLoginPage = await Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return onPressedLoginView();
+                }));
+              },
+              icon: Icon(Icons.account_circle))
+        ],
       ),
       body: ListView.builder(
           itemCount: todoList.length,
